@@ -102,9 +102,8 @@ body{
 /* Layout  */
 
 .parentLayout {
-  width: 90%;
   display: grid;
-  grid-template: auto 1fr auto / auto 1fr auto;   
+  grid-template: auto 1fr auto / auto 7fr 3fr;   
 }
 
 .header {
@@ -116,11 +115,25 @@ body{
 }
 
 .main {
-  grid-column: 2 / 4;
+  grid-column: 2 / 3;
+}
+
+.right-side{
+  grid-column: 3/4;
 }
 
 .footer {
   grid-column: 1 / 4;
+}
+
+/* For screens that are 768px or less */
+@media (max-width: 768px) {
+  .right-side{
+    display: none;
+  }
+  .main{
+    grid-column: 2/4;
+  }
 }
 
 /* End */

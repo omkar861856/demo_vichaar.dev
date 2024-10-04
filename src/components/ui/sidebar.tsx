@@ -8,30 +8,37 @@ import {
     Settings,
     ShoppingCart,
     UsersRound,
-  } from "lucide-react"
+    Binary,
+    Boxes,
+    Briefcase,
+    Layers,
+    Monitor,
+    Megaphone,
+    Cpu,
+} from "lucide-react"
 import { Button } from './DashButton'
 
 import { useWindowWidth } from '@react-hook/window-size'
 
 type Props = {}
 
-export default function Sidebar({}: Props) {
+export default function Sidebar({ }: Props) {
 
     const [isCollapsed, setIsCollapsed] = React.useState(false)
 
     const onlyWidth = useWindowWidth()
-    const mobileWidth = onlyWidth < 768
+    const mobileWidth = onlyWidth < 450
 
-    function toggleSidebar(){
+    function toggleSidebar() {
         setIsCollapsed(!isCollapsed)
     }
     return (
-        <div className='relative min-w-[80px] border-r px-3 pb-10 pt-24'>
+        <div className='sticky top-[20px] min-w-[80px] border-r px-3 pb-10 pt-24'>
             {!mobileWidth &&
                 <div className='absolute right-[-20px] top-7'>
                     <Button variant='secondary' className='rounded-full p-2' onClick={toggleSidebar}>
-                        {isCollapsed?<ChevronRight/>:<ChevronLeft />}
-                        
+                        {isCollapsed ? <ChevronRight /> : <ChevronLeft />}
+
                     </Button>
                 </div>
             }
@@ -39,31 +46,56 @@ export default function Sidebar({}: Props) {
                 isCollapsed={mobileWidth ? true : isCollapsed}
                 links={[
                     {
-                    title: "Dashboard",
-                    href: "/dashboard",
-                    icon: LayoutDashboard,
-                    variant: "default",
+                        title: "Dashboard",
+                        href: "/dashboard",
+                        icon: LayoutDashboard,
+                        variant: "default",
                     },
                     {
-                    title: "Hackathon Updates",
-                    href: "/hackathon",
-                    icon: UsersRound,
-                    variant: "ghost",
+                        title: "Hackathon Updates",
+                        href: "/hackathon",
+                        icon: Binary,
+                        variant: "default",
                     },
                     {
-                    title: "Join Community",
-                    href: "/community",
-                    icon: ShoppingCart,
-                    variant: "ghost",
+                        title: "Join Community",
+                        href: "/community",
+                        icon: Boxes,
+                        variant: "ghost",
                     },
                     {
-                    title: "Post Jobs",
-                    href: "/jobs",
-                    icon: Settings,
-                    variant: "ghost",
+                        title: "Post Jobs",
+                        href: "/jobs",
+                        icon: Briefcase,
+                        variant: "ghost",
+                    },
+                    {
+                        title: "Showcase Projects",
+                        href: "/showcase",
+                        icon: Layers,
+                        variant: "ghost",
+                    },
+                    {
+                        title: "Tech Memes",
+                        href: "/memes",
+                        icon: Monitor,
+                        variant: "ghost",
+                    },
+                    {
+                        title: "Startup News",
+                        href: "/news",
+                        icon: Megaphone,
+                        variant: "ghost",
+                    },
+                    {
+                        title: "AI Feature",
+                        href: "/ai",
+                        icon: Cpu,
+                        variant: "ghost",
                     },
                 ]}
             />
         </div>
     )
 }
+
